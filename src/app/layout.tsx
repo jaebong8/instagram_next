@@ -1,5 +1,7 @@
 import { Open_Sans } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
+import AuthContext from "@/context/AuthContext";
 
 export const metadata = {
   title: "Create Next App",
@@ -14,7 +16,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={OpenSans.className}>
-      <body>{children}</body>
+      <body className="w-full max-w-screen-xl mx-auto overflow-auto">
+        <AuthContext>
+          <header className="sticky top-0 z-10 flex items-center bg-white border-b ">
+            <Navbar />
+          </header>
+
+          <main> {children}</main>
+        </AuthContext>
+      </body>
     </html>
   );
 }
