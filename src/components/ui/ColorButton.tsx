@@ -4,7 +4,7 @@ import { twMerge } from "tailwind-merge";
 type Props = {
   text: string;
   onClick?: () => void;
-  type: "button" | "submit" | "reset";
+  type?: "button" | "submit" | "reset";
   className?: string;
 };
 

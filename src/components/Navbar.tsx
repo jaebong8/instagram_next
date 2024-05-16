@@ -10,6 +10,7 @@ import SearchFillIcon from "./ui/icons/SearchFillIcon";
 import { usePathname } from "next/navigation";
 import ColorButton from "./ui/ColorButton";
 import { useSession, signIn, signOut } from "next-auth/react";
+import Avatar from "./Avatar";
 
 const menu = [
   {
@@ -32,7 +33,7 @@ const menu = [
 const Navbar = () => {
   const pathName = usePathname();
   const { data: session, status } = useSession();
-  console.log(status);
+  const user = session?.user;
   return (
     <nav className="flex items-center justify-between p-5 grow">
       <Link href={"/"}>
@@ -47,12 +48,23 @@ const Navbar = () => {
             </Link>
           </li>
         ))}
+        {user && (
+          <li>
+            <Link href={`/user/${user.username}`}>
+              <Avatar image={user.image} />
+            </Link>
+          </li>
+        )}
         {status === "loading" ? (
           <span>loading...</span>
         ) : session ? (
-          <ColorButton text="Sign Out" onClick={() => signOut()} />
+          <li>
+            <ColorButton text="Sign Out" onClick={() => signOut()} />
+          </li>
         ) : (
-          <ColorButton text="Sign In" onClick={() => signIn()} />
+          <li>
+            <ColorButton text="Sign In" onClick={() => signIn()} />
+          </li>
         )}
       </ul>
     </nav>
