@@ -7,13 +7,7 @@ type OAuthUser = {
   username: string;
   image?: string | null;
 };
-export const addUser = async ({
-  id,
-  username,
-  email,
-  image,
-  name,
-}: OAuthUser) => {
+export const addUser = async ({ username, email, image, name }: OAuthUser) => {
   return client.createIfNotExists({
     _id: username,
     _type: "user",
