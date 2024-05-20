@@ -11,6 +11,7 @@ import { usePathname } from "next/navigation";
 import ColorButton from "./ui/ColorButton";
 import { useSession, signIn, signOut } from "next-auth/react";
 import Avatar from "./Avatar";
+import { ClipLoader } from "react-spinners";
 
 const menu = [
   {
@@ -51,12 +52,14 @@ const Navbar = () => {
         {user && (
           <li>
             <Link href={`/user/${user.username}`}>
-              <Avatar image={user.image} />
+              <Avatar image={user.image} gradient />
             </Link>
           </li>
         )}
         {status === "loading" ? (
-          <span>loading...</span>
+          <li className="w-[80px] h-[38px] flex items-center justify-center">
+            <ClipLoader color="#999" size={20} />
+          </li>
         ) : session ? (
           <li>
             <ColorButton text="Sign Out" onClick={() => signOut()} />

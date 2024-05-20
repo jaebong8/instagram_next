@@ -9,7 +9,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   },
   callbacks: {
     async signIn({ user: { id, name, email, image } }) {
-      console.log(id, "id");
       if (!email || !id) return false;
       addUser({
         id,

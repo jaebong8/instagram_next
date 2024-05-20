@@ -11,7 +11,6 @@ const SigninPage = async ({ searchParams: { callbackUrl } }: Props) => {
   const session = await auth();
 
   if (session?.user) redirect("/");
-  console.log(callbackUrl, "callbackUrl");
 
   return (
     <form
@@ -19,12 +18,12 @@ const SigninPage = async ({ searchParams: { callbackUrl } }: Props) => {
         "use server";
         await signIn("google", { redirectTo: callbackUrl });
       }}
-      className="flex justify-center mt-[20%]"
+      className="mt-[10%]"
     >
       <ColorButton
         type="submit"
         text="Sign in with Google"
-        className="text-3xl p-[0.5rem]"
+        className="text-3xl p-[0.5rem] "
       />
     </form>
   );

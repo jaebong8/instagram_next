@@ -2,6 +2,7 @@ import { Open_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import AuthContext from "@/context/AuthContext";
+import SWRConfigContext from "./../context/SWRConfigContext";
 
 export const metadata = {
   title: "Create Next App",
@@ -22,8 +23,11 @@ export default function RootLayout({
             <Navbar />
           </header>
 
-          <main> {children}</main>
+          <main className="flex justify-center w-full min-h-full bg-neutral-50">
+            <SWRConfigContext> {children}</SWRConfigContext>
+          </main>
         </AuthContext>
+        <div id="portal"></div>
       </body>
     </html>
   );
