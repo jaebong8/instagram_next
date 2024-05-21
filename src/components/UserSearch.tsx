@@ -1,6 +1,6 @@
 "use client";
 
-import { UserSearchResult } from "@/types/model/user";
+import { SearchUser } from "@/types/model/user";
 import { FormEvent, useState } from "react";
 import { RingLoader } from "react-spinners";
 import useSWR from "swr";
@@ -14,7 +14,7 @@ const UserSearch = () => {
     data: users,
     isLoading,
     error,
-  } = useSWR<UserSearchResult[]>(`/api/search/${debounceValue}`);
+  } = useSWR<SearchUser[]>(`/api/search/${debounceValue}`);
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
   };

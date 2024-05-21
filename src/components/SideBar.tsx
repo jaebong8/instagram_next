@@ -1,11 +1,11 @@
-import { User } from "@/types/model/user";
+import { AuthUser } from "@/types/model/user";
 import React from "react";
 import Avatar from "./Avatar";
 
 const SideBar = ({
   user: { name, username, image, email },
 }: {
-  user: User;
+  user: AuthUser;
 }) => {
   return (
     <>

@@ -1,4 +1,4 @@
-import { UserSearchResult } from "@/types/model/user";
+import { SearchUser } from "@/types/model/user";
 import Link from "next/link";
 import React from "react";
 import Avatar from "./Avatar";
@@ -6,7 +6,7 @@ import Avatar from "./Avatar";
 const UserCard = ({
   user: { name, username, image, following, followers },
 }: {
-  user: UserSearchResult;
+  user: SearchUser;
 }) => {
   return (
     <Link

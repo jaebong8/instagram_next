@@ -1,5 +1,6 @@
-import { RiBookmarkLine } from 'react-icons/ri';
+import { RiBookmarkLine } from "react-icons/ri";
+import { twMerge } from "tailwind-merge";
 
-export default function BookmarkIcon() {
-  return <RiBookmarkLine className='w-6 h-6' />;
+export default function BookmarkIcon({ className }: { className?: string }) {
+  return <RiBookmarkLine className={twMerge("w-6 h-6", className)} />;
 }
