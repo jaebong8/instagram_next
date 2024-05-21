@@ -1,7 +1,8 @@
+import UserSearch from "@/components/UserSearch";
 import React from "react";
 
 const SearchPage = () => {
-  return <div>SearchPage</div>;
+  return <UserSearch />;
 };
 
 export default SearchPage;
