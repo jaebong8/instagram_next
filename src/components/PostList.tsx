@@ -15,8 +15,6 @@ const GridLoader = dynamic(
 
 const PostList = () => {
   const { data: posts, error, isLoading } = useSWR<SimplePost[]>("/api/posts");
-  console.log(posts);
-
   return (
     <section>
       {isLoading && (
