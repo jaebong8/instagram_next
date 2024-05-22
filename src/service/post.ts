@@ -71,13 +71,25 @@ export const getLikedPostsOf = async (username: string) => {
 export const getSavedPostsOf = async (username: string) => {
   return client
     .fetch(
-      `
-    *[_type =="post" && _id in *[_type=="user" && username == "${username}"].bookmarks[]._ref] | order(_createdAt desc){
+      `*[_type == "post" && _id in *[_type=="user" && username == "${username}"].bookmarks[]._ref]
+       | order(_createdAt desc){
       ${simpleProjection}
-    }
-  `
+      }`
     )
     .then((posts) =>
       posts.map((post: SimplePost) => ({ ...post, image: urlFor(post.image) }))
     );
 };
+
+// export async function getSavedPostsOf(username: string) {
+//   return client
+//     .fetch(
+//       `*[_type == "post" && _id in *[_type=="user" && username=="${username}"].bookmarks[]._ref]
+//       | order(_createdAt desc){
+//         ${simpleProjection}
+//       }`
+//     )
+//     .then((posts) =>
+//       posts.map((post: SimplePost) => ({ ...post, image: urlFor(post.image) }))
+//     );
+// }

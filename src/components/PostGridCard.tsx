@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import ModalPortal from "./ui/ModalPortal";
 import PostModal from "./PostModal";
 import PostDetail from "./PostDetail";
+import { signIn, useSession } from "next-auth/react";
 
 const PostGridCard = ({
   post,
@@ -14,6 +15,13 @@ const PostGridCard = ({
 }) => {
   const { image, username } = post;
   const [openModal, setOpenModal] = useState(false);
+  const { data: session } = useSession();
+  const handleOpenPost = () => {
+    if (!session?.user) {
+      return signIn();
+    }
+    setOpenModal(true);
+  };
   return (
     <div className="relative w-full aspect-square">
       <Image
@@ -23,7 +31,7 @@ const PostGridCard = ({
         priority={priority}
         fill
         sizes="650px"
-        onClick={() => setOpenModal(true)}
+        onClick={handleOpenPost}
       />
       {openModal && (
         <ModalPortal>

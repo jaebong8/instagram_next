@@ -1,7 +1,13 @@
 import { auth, signIn } from "@/auth";
 import ColorButton from "@/components/ui/ColorButton";
+import { Metadata } from "next";
 import { redirect } from "next/navigation";
 import React from "react";
+
+export const metadata: Metadata = {
+  title: "Signin",
+  description: "Signup or Login to Instagram",
+};
 type Props = {
   searchParams: {
     callbackUrl: string;
